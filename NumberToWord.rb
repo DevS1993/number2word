@@ -1,6 +1,23 @@
 class NumberToWord
-  def letter_combinations(digits)
-    return "Invalid Number" if validate_input(digits)
+
+  DIGITS_CHARACTERS_MAPPING = {
+    "2" => ["a", "b", "c"],
+    "3" => ["d", "e", "f"],
+    "4" => ["g", "h", "i"],
+    "5" => ["j", "k", "l"],
+    "6" => ["m", "n", "o"],
+    "7" => ["p", "q", "r", "s"],
+    "8" => ["t", "u", "v"],
+    "9" => ["w", "x", "y", "z"]
+  }
+
+  DICTIONARY = []
+  File.foreach("dictionary.txt") do |word|
+    DICTIONARY << (word.chop.downcase)
+  end
+
+  def letter_combinations(number)
+    return "Invalid Number : #{number}" if validate_input(number)
 
     return "Valid Number"
   end
@@ -15,3 +32,4 @@ p NumberToWord.new().letter_combinations("")
 p NumberToWord.new().letter_combinations("123")
 p NumberToWord.new().letter_combinations("6686707825")
 p NumberToWord.new().letter_combinations("6686777821")
+p NumberToWord.new().letter_combinations("9799592799")
