@@ -17,7 +17,7 @@ class NumberToWord
   end
 
   def letter_combinations(number)
-    start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    # start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     return "Invalid Number : #{number}" if validate_input(number)
 
     digits_as_characters = number.chars.map{|digit| DIGITS_CHARACTERS_MAPPING[digit]}
@@ -45,8 +45,8 @@ class NumberToWord
 
     acceptable_words << (digits_as_characters.shift.product(*digits_as_characters).map(&:join) & DICTIONARY).join(", ")
 
-    end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    p "Time taken : #{((end_time - start_time) * 1000).to_i}ms"
+    # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    # p "Time taken : #{((end_time - start_time) * 1000).to_i}ms"
     return acceptable_words
   end
 
@@ -54,8 +54,3 @@ class NumberToWord
     (input.nil?) || (input.length != 10) || input.include?("0") || input.include?("1")
   end
 end
-
-numb_to_word = NumberToWord.new()
-p numb_to_word.letter_combinations("6686787825")
-puts
-p numb_to_word.letter_combinations("2282668687")
